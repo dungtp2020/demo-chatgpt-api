@@ -19,7 +19,7 @@ export default async function (req, res) {
   if (animal.trim().length === 0) {
     res.status(400).json({
       error: {
-        message: "Please enter a valid animal",
+        message: "Please enter a valid content",
       }
     });
     return;
@@ -31,7 +31,18 @@ export default async function (req, res) {
       prompt: generatePrompt(animal),
       temperature: 0.6,
     });
-    res.status(200).json({ result: completion.data.choices[0].text });
+
+    const response = await openai.createImage({
+      prompt: animal,
+      n: parseInt(req.body.numberImage),
+      size: "1024x1024",
+    });
+
+    console.log('>>> response.data.data: ', response.data.data)
+    const image_url = response.data.data[0].url;
+
+    //res.status(200).json({ result: completion.data.choices[0].text });
+    res.status(200).json({ result: response.data.data });
   } catch(error) {
     // Consider adjusting the error handling logic for your use case
     if (error.response) {
