@@ -34,7 +34,8 @@ export default async function (req, res) {
 
     const response = await openai.createImage({
       prompt: animal,
-      n: parseInt(req.body.numberImage),
+      //n: parseInt(req.body.numberImage),
+      n: 5,
       size: "1024x1024",
     });
 

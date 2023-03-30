@@ -58,15 +58,15 @@ export default function Home() {
             value={animalInput}
             onChange={(e) => setAnimalInput(e.target.value)}
           /> */}
-          <input
+          {/* <input
             style={{ marginTop: '10px', width: '120px' }}
             type="text"
             name="number_image"
             placeholder="number image"
             value={numberImage}
             onChange={(e) => setNumberImage(e.target.value)}
-          />
-          <input type="submit" className="loader" value="Generate image" />
+          /> */}
+          <input type="submit" className="loader" value="Generate image" style={{ marginTop: '10px' }} />
         </form>
         {/* <div className={styles.result}>{result}</div> */}
         <div style={{ marginTop: '5px' }}>{ waiting }</div>
